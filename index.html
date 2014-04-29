@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="UART on L-01F : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>UART on L-01F</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/hiikezoe">View on GitHub</a>
+
+          <h1 id="project_title">UART on L-01F</h1>
+          <h2 id="project_tagline"></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Nexus4やNexus5ではイヤホンジャックからUARTが出てるということだったので、L-01Fでも試してみた結果。</p>
+
+<h2>
+<a name="%E6%BA%96%E5%82%99" class="anchor" href="#%E6%BA%96%E5%82%99"><span class="octicon octicon-link"></span></a>準備</h2>
+
+<p>参考にしたサイトによるとイヤホンジャックに挿したケーブルがUARTだと認識されるためには、MIC入力に3.3Vが必要らしい。<br>
+また、UARTの信号レベルは1.8Vでないといけないらしい。<br>
+というわけで、3.3Vの電源と信号レベル1.8VなUSB-シリアル変換ケーブル、イヤホンジャックに接続する3.5mm 4極ステレオミニプラグを用意することにした。</p>
+
+<h3>
+<a name="%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%91%E3%83%BC%E3%83%84" class="anchor" href="#%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%91%E3%83%BC%E3%83%84"><span class="octicon octicon-link"></span></a>実際に使用したパーツ</h3>
+
+<p>実際に使用したパーツは以下のとおり。<br>
+1.8Vな信号レベルが出ているUSB-シリアル変換ケーブルは探した限り１つしかなかった。<br>
+残念なことにこのケーブルの電源電圧も1.8Vだったので、それを3.3Vにするためレギュレータも必要になった。</p>
+
+<ol>
+<li><a href="http://jp.rs-online.com/web/p/interface-development-kits/7158525/">1.8VなUSB-シリアル変換ケーブル</a></li>
+<li>3.5mm 4極ステレオミニプラグ</li>
+<li> <a href="http://www.switch-science.com/catalog/1391/">3.3Vステップアップ電圧レギュレータ</a>
+</li>
+</ol><h4>
+<a name="%E3%81%A4%E3%81%AA%E3%81%8E%E6%96%B9" class="anchor" href="#%E3%81%A4%E3%81%AA%E3%81%8E%E6%96%B9"><span class="octicon octicon-link"></span></a>つなぎ方</h4>
+
+<ul>
+<li>1の橙(TXD)と2の白</li>
+<li>1の黄(RXD)と2の赤</li>
+<li>１の黒(GND)と2の黄</li>
+<li>1の黒(GND)と3のGND</li>
+<li>1の赤(VCC)と3のVIN</li>
+<li>2の裸の線(MIC)と3のVOUT</li>
+</ul><h2>
+<a name="%E7%B5%90%E6%9E%9C" class="anchor" href="#%E7%B5%90%E6%9E%9C"><span class="octicon octicon-link"></span></a>結果</h2>
+
+<p>L-01Fに挿して電源を入れるとログが取れた。</p>
+
+<h3>
+<a name="%E5%8F%96%E5%BE%97%E3%81%A7%E3%81%8D%E3%81%9F%E3%83%AD%E3%82%B0" class="anchor" href="#%E5%8F%96%E5%BE%97%E3%81%A7%E3%81%8D%E3%81%9F%E3%83%AD%E3%82%B0"><span class="octicon octicon-link"></span></a>取得できたログ</h3>
+
+<p><a href="https://gist.github.com/hiikezoe/11390036">電源ONから電源OFFまでの全ログ</a><br>
+Nexus4やNexus5ではbootloaderのログも取得できているみたいなのに、L-01FではLinuxカーネルが起動してからのログしか取れなかった。<br>
+ただ、カーネルのcmdlineに
+<code>uart_console=detected</code>
+と出ているので、bootloaderもUARTケーブルが刺さっていることは認識しているよう。</p>
+
+<h2>
+<a name="%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88" class="anchor" href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88"><span class="octicon octicon-link"></span></a>参考にしたサイト</h2>
+
+<ul>
+<li><a href="https://blog.accuvant.com/jduckandryan/building-a-nexus-4-uart-debug-cable/">Building a Nexus 4 UART Debug Cable</a></li>
+<li><a href="http://www.abclinuxu.cz/blog/Lorris/2013/12/serial-console-on-google-nexus-5">Serial Console on Google Nexus 5</a></li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
