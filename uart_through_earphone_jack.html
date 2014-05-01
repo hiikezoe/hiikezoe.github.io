@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="UART on LG devices : " />
+    <meta name="description" content="UART through earphone check on Android devices : " />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>UART on LG devices</title>
+    <title>UART through earphone jack on Android devices</title>
   </head>
 
   <body>
@@ -18,7 +18,7 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/hiikezoe/hiikezoe.github.io">View on GitHub</a>
 
-          <h1 id="project_title">UART on LG devices</h1>
+          <h1 id="project_title">UART through earphone jack on Android devices</h1>
           <h2 id="project_tagline"></h2>
 
         </header>
@@ -27,7 +27,7 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p>Nexus4やNexus5ではイヤホンジャックからUARTが出てるということだったので、LG製の他のデバイスでも試してみた。</p>
+        <p>Nexus4やNexus5ではイヤホンジャックからUARTが出てるということだったので、他のAndroidデバイスでも試してみた。</p>
 
 <h2>
 <a name="%E6%BA%96%E5%82%99" class="anchor" href="#%E6%BA%96%E5%82%99"><span class="octicon octicon-link"></span></a>準備</h2>
@@ -76,6 +76,13 @@ Nexus4やNexus5ではbootloaderのログも取得できているみたいなの�
 <a name="LGL22" class="anchor" href="#LGL22"><span class="octicon octicon-link"></span></a>LGL22</h3>
 <p><a href="https://gist.github.com/hiikezoe/c04132f24a20fda76bdb">電源ONから電源OFFまでの全ログ</a><br>
 L-01Fと同じくLinuxカーネルが起動してからのログしか取れていない。<br>
+</p>
+
+<h3>
+<a name="SC04D" class="anchor" href="#SC04D"><span class="octicon octicon-link"></span></a>SC04D</h3>
+<p><a href="https://gist.github.com/hiikezoe/8ac8a972bdeb020e8664">電源ONからLinuxカーネルが起動するまでのログ</a><br>
+L-01FやLGL22と違い、Linuxカーネルが起動する前のPBLのログから取れた。<br>
+SC04DはUSBからもイヤホンジャックからもUARTが出てるちょっと変わった機種だということが分かった。
 </p>
 
 <h2>
