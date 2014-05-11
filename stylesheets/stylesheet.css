@@ -242,11 +242,13 @@ th {
   padding: 10px;
   background: #373737;
   color: #fff;
+  text-align: center;
  }
 
 td {
   padding: 10px;
   border: 1px solid #373737;
+  vertical-align: middle;
  }
 
 form {

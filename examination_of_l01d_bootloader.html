@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Examination of L-01D bootloader : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Examination of L-01D bootloader</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/hiikezoe/hiikezoe.github.io">View on GitHub</a>
+
+          <h1 id="project_title">Examination of L-01D bootloader</h1>
+          <h2 id="project_tagline"></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+<p>LG製の端末はダウンロードモードがあるので、aboot領域を変更して起動しなくなっても元に戻せるという安心感があるので、色々いじって調べてみた。</p>
+<h2><a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a>変数を格納しているアドレス値</h2>
+
+<h3><a name="ccsecurity" class="anchor" href="#ccsecurity"><span class="octicon octicon-link"></span></a>ccsecurity</h3>
+<p>
+<table>
+<tr><th>アドレス</th><th>値</th><th>効果</th><th>デフォルト</th></tr>
+<tr><td rowspan="2">0x4247C</td><td>0</td><td>ccsecurity=off</td></tr>
+<tr><td>1</td><td></td><td>✓</td></tr>
+</table>
+Kernelのcmdlineにccsecurity=offを追加する変数。</br>
+reboot syscallに--bnr_recoveryというオプションを与えた時にccsecurityがoffになるようになっている。onに戻す処理はbootloader内にはないので、Linuxカーネルが起動した後に戻されるのだと思う。</p>
+<h3><a name="uart_console" class="anchor" href="#uart_console"><span class="octicon octicon-link"></span></a>uart_console</h3>
+<p>Kernelのcmdlineのuart_console=の値を制御する変数。<br>
+<table>
+<tr><th>アドレス</th><th>値</th><th>効果</th><th>デフォルト</th></tr>
+<tr><td rowspan="2">0x424B4</td><td>0</td><td>uart_console=enable</td></tr>
+<tr><td>1</td><td>uart_console=disable</td><td>✓</td></tr>
+</table>
+ただ、どこからUARTが出ているか分かってないので実際の効果は未確認。</p>
+<h3><a name="urf_udc_device" class="anchor" href="#urf_udc_device"><span class="octicon octicon-link"></span></a>surf_udc_device</h3>
+<p>fastbootモードでPCとつないだ時のvendor_idやproduct_idが入っている。<br>
+<table>
+<tr><th>アドレス</th><th>値</th></tr>
+<tr><td>0x42a70</td><td>{0x18d1, 0xD00D, 0x0100, "Google", "Android"}</td></tr>
+</table>
+<h3><a name="device_info" class="anchor" href="#device_info"><span class="octicon octicon-link"></span></a>device_info</h3>
+<p>device_info<br>
+<table>
+<tr><th>アドレス</th><th>値</th></tr>
+<tr><td>0x42a88</td><td>{ "ANDROID-BOOT!", 0, 0}</td></tr>
+</table>
+<p>
+</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+  </body>
+</html>
