@@ -28,6 +28,23 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
 <p>LG製の端末はダウンロードモードがあるので、aboot領域を変更して起動しなくなっても元に戻せるという安心感があるので、色々いじって調べてみた。</p>
+<p>結果、文鎮化した。調べている途中からの『もしかしてダウンロードモードの実装ってこのabootの中なんじゃ…』という疑念が確信に変わったのは文鎮化した後。</p>
+
+<h2><a name="fastboot" class="anchor" href="#fastboot"><span class="octicon octicon-link"></span></a>fastbootモードを有効に</h2>
+<h3><a name="adb_fastboot" class="anchor" href="#adb_fastboot"><span class="octicon octicon-link"></span></a>adb reboot bootloader</h3>
+<p><code>adb reboot recovery</code>なんかなくてもいいだろとその処理に入る部分を上書きしたところあっさりfastbootモードに入れた。</p>
+<p>具体的には
+<pre>
+    0xcd6a:f245 5302 movw  r3, #21762; 0x5502
+    0xcd6e:f2c7 7366 movt  r3, #30566; 0x7766
+    0xcd72:429d      cmp   r5, r3
+    0xcd74:f000 800c beq.w 0xcee0
+</pre>
+の0x5502を0x5500、そして0xcee0を0xcd90に変更した。
+</p>
+<h3><a name="coldboot_fastboot" class="anchor" href="#coldboot_fastboot"><span class="octicon octicon-link"></span></a>電源OFFからのfastboot</h3>
+<p>adb reboot bootloaderがうまくいったので、調子に乗ってリカバリーモードに入るVolumeUp+PowerOnキーを押した時の処理(と思われる箇所)をfastbootに飛ばすはずが文鎮になった。</p>
+
 <h2><a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a>変数を格納しているアドレス値</h2>
 
 <h3><a name="ccsecurity" class="anchor" href="#ccsecurity"><span class="octicon octicon-link"></span></a>ccsecurity</h3>
