@@ -1,0 +1,59 @@
+<!doctype html>
+<meta charset="utf-8">
+<html>
+<title>prefers-reduced-motion media queries</title>
+<style>
+span {
+  background-color: red;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #no-preference {
+    background-color: green;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #reduce {
+    background-color: green;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  #boolean-context {
+    background-color: green;
+  }
+}
+</style>
+<div>
+If the system setting means 'user prefers reduced motion', you will see a red
+background box and two green background box below, otherwise you will see a
+green box and two red box.
+</div>
+<div>
+You can find the setting for prefers-reduced-motion
+<li> On Windows 10; Ease of Access -> Other options -> Play animations in Windows </li>
+<li> On Linux in gnome-tweaks; Appearance -> Animations </li>
+<li> On MacOSX; System Preferences > Accessibility > Display > Reduce Motion </li>
+</div>
+<div>
+  <span id="no-preference"> @media (prefers-reduced-motion: no-preference) </span>
+</div>
+<div>
+  <span id="reduce"> @media (prefers-reduced-motion: reduce) </span>
+</div>
+<div>
+  <span id="boolean-context"> @media (prefers-reduced-motion) </span>
+</div>
+<div>
+NOTE: On MacOSX the system setting change doesn't reflect until restart Firefox
+or open the content in a new window due to
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1486971">bug 1486971</a>
+</div>
+<div>
+NOTE2: On all platforms the system setting change doesn't reflect the content in
+sub frames, for example, if you open this content in an iframe, you will not see
+the background color changes until you reload the content.
+(<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1478212">bug 1478212</a>)
+</div>
+</html>
