@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset="utf-8">
+<html>
+<title>Interaction Media Features</title>
+<style>
+div {
+  visibility: hidden;
+}
+@media (pointer: none) {
+  #pointer-none  { visibility: visible; }
+}
+@media (pointer: fine) {
+  #pointer-fine { visibility: visible; }
+}
+@media (pointer: coarse) {
+  #pointer-coase { visibility: visible; }
+}
+@media (any-pointer: none) {
+  #any-pointer-none { visibility: visible; }
+}
+@media (any-pointer: fine) {
+  #any-pointer-fine { visibility: visible; }
+}
+@media (any-pointer: coarse) {
+  #any-pointer-coarse { visibility: visible; }
+}
+@media (hover: none) {
+  #hover-none { visibility: visible; }
+}
+@media (hover: hover) {
+  #hover-hover { visibility: visible; }
+}
+@media (any-hover: none) {
+  #any-hover-none { visibility: visible; }
+}
+@media (any-hover: hover) {
+  #any-hover-hover { visibility: visible; }
+}
+</style>
+<h3><a href="https://drafts.csswg.org/mediaqueries-4/#pointer"> pointer feature </a></h3>
+<div id="pointer-none">pointer: none</div>
+<div id="pointer-fine">pointer: fine</div>
+<div id="pointer-coarse">pointer: coarse</div>
+
+<h3><a href="https://drafts.csswg.org/mediaqueries-4/#descdef-media-any-pointer"> any-pointer feature </a></h3>
+<div id="any-pointer-none">any-pointer: none</div>
+<div id="any-pointer-fine">any-pointer: fine</div>
+<div id="any-pointer-coarse">any-pointer: coarse</div>
+
+<h3><a href="https://drafts.csswg.org/mediaqueries-4/#hover"> hover feature </a></h3>
+<div id="hover-none">hover: none</div>
+<div id="hover-hover">hover: hover</div>
+
+<h3><a href="https://drafts.csswg.org/mediaqueries-4/#descdef-media-any-hover"> any-hover feature </a></h3>
+<div id="any-hover-none">any-hover: none</div>
+<div id="any-hover-hover">any-hover: hover</div>
+
+</html>
