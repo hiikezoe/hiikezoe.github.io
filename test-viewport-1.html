@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta id="viewport" name="viewport" content="">
+  <style>
+    .abspos {
+      position: absolute;
+      bottom: 0%;
+      border: 3px solid red;
+    }
+  </style>
+</head>
+<body>
+  Do you see the "Hello" text at the bottom of this page? (This is with initial-scale=0.75.)
+  <div class="abspos">Hello</div>
+
+
+<script>
+setTimeout(() => {
+  viewport.content = 'width=800,initial-scale=0.75, user-scalable=no';
+}, 1000);
+<script>
+</body></html>
