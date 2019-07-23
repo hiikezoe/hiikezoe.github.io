@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta id="first" name="viewport" content="width=980">
+<meta id="second" name="viewport" content="width=500">
+<style>
+</style>
+<script>
+  addEventListener('load', () => {
+    document.body.innerText = document.documentElement.clientWidth + 'px';
+  });
+  setTimeout(() => {
+    first.setAttribute("content", "width=640");
+    document.body.innerText = document.documentElement.clientWidth + 'px';
+    setTimeout(() => {
+      second.setAttribute("content", "");
+      document.body.innerText = document.documentElement.clientWidth + 'px';
+    }, 2000);
+  }, 2000);
+</script>
+</head>
+<body></body>
+</html>
