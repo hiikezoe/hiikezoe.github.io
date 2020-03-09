@@ -1,0 +1,19 @@
+<style>
+@keyframes anim {
+  from { color: red; }
+  to { color: blue; }
+}
+#target {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+</style>
+<div id="target"></div>
+<script>
+target.style.animation = "anim 1s infinite";
+const anim = target.getAnimations()[0];
+anim.ready.then(() => {
+  console.log("ready\n");
+});
+</script>
