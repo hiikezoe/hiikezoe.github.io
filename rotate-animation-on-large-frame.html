@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<style>
+html {
+  overflow: hidden;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+@keyframes anim {
+  to { transform: rotate(90deg); }
+}
+#target {
+  position: absolute;
+  top: -500px;
+  left: -500px;
+  width: 3000px;
+  height: 3000px;
+  background-image: linear-gradient(0deg, #B2A2CD 25%, #5F5370 25%, #5F5370 50%, #B2A2CD 50%, #B2A2CD 75%, #5F5370 75%, #5F5370 100%);
+  border: 2px black solid;
+  animation: anim 10s infinite alternate;
+}
+</style>
+<div id="target"></div>
