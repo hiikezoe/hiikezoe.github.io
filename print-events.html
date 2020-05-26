@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+</body>
+<script>
+window.addEventListener("beforeprint", () => {
+  document.body.innerHTML = "beforeprint";
+}, { once: true });
+window.addEventListener("afterprint", () => {
+  document.body.innerHTML = "afterprint";
+}, { once: true });
+</script>
+</html>
