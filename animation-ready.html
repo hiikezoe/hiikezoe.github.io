@@ -11,10 +11,12 @@
 </style>
 <div id="target"></div>
 <script>
+setTimeout(() => {
 target.style.animation = "anim 1s infinite";
 const anim = target.getAnimations()[0];
 anim.ready.then(() => {
   dump("ready\n");
   console.log("ready");
 });
+}, 1000);
 </script>
