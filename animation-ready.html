@@ -18,5 +18,9 @@ anim.ready.then(() => {
   dump("ready\n");
   console.log("ready");
 });
+requestAnimationFrame(() => {
+  console.log("a rAF callback is invoked");
+});
+console.log("a setTimeout callback is invoked");
 }, 1000);
 </script>
