@@ -14,6 +14,7 @@
 target.style.animation = "anim 1s infinite";
 const anim = target.getAnimations()[0];
 anim.ready.then(() => {
-  console.log("ready\n");
+  dump("ready\n");
+  console.log("ready");
 });
 </script>
