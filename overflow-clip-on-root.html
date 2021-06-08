@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+<style>
+html {
+  height: 100%;
+  width: 100%;
+  overflow: clip;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+}
+.fixed {
+  position: fixed;
+  width: 100vw;
+  height: 100px;
+  background-color: blue;
+  bottom: 0px;
+}
+</style>
+<div class="fixed"></div>
+<script>
+window.addEventListener("load", () => {
+  const bottom = document.querySelector(".fixed").getBoundingClientRect().bottom;
+  const div = document.createElement("div");
+  div.style = `position: absolute; width: 100vw; height: 5px; background-color: red; top: ${bottom}px`;
+  document.body.appendChild(div);
+});
+</script>
+</html>
