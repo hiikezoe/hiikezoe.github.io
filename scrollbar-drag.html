@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<style>
+body {
+  height: 500vh;
+}
+</style>
+<div id="log"></div>
+<script>
+window.addEventListener("mousedown", event => {
+  if (event.target === document.documentElement) {
+    const anchor = document.documentURI.slice(document.documentURI.lastIndexOf("#") + 1);
+    log.innerHTML = `${event.type} ${event.pageX} ${event.pageY} ${anchor}`;
+    parent.postMessage(`scrollbar-drag-start:${anchor}`, "*");
+  }
+});
+</script>
