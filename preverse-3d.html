@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+body {
+  display: grid;
+  place-items: center;
+}
+
+.banner {
+  display: flex;
+  transform-style: preserve-3d;
+  animation: rotate 24s infinite linear;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotateY(-360deg);
+  }
+}
+.panel {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+</style>
+</head>
+<body>
+<div>
+  <div class="banner" id="test">
+   <div class="panel"></div>
+  </div>
+</div>
+</body></html>
