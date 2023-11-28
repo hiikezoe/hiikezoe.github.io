@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
-  <meta charset="UTF-8">
-  <title>CodePen - 3d text</title>
+<title>CodePen - 3d text</title>
 <style>
-body {
+.scene {
   display: grid;
-  place-items: center;
 }
 
 .banner {
   display: flex;
   transform-style: preserve-3d;
+  transform-origin: 100px 100px;
   animation: rotate 24s infinite linear;
 }
 
@@ -30,10 +28,9 @@ body {
 }
 </style>
 </head>
-<body>
-  <div>
+<div class="scene">
   <div class="banner">
    <div class="panel"></div>
   </div>
 </div>
-</body></html>
+<html>
